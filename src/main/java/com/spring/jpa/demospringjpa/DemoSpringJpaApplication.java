@@ -21,11 +21,25 @@ public class DemoSpringJpaApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		Course course=courseRepository.findById(1001L);
-		logger.info("Course details-->{}",course);
 
-		courseRepository.deleteById(1002L);
+		//FindBy
+		// TODO Auto-generated method stub
+		// Course course=courseRepository.findById(1001L);
+		// logger.info("Course details-->{}",course);
+
+		//deleteBy
+		// courseRepository.deleteById(1002L);
+
+		//save
+		// Course course=courseRepository.save(new Course("Spring raghu"));
+		// logger.info("Course details-->{}",course);
+
+		// Course course1=courseRepository.findById(1L);
+		// course1.setName("updated Raghu");
+		// course1=courseRepository.save(course1);
+		// logger.info("Course details-->{}",course1);
+
+
 	}
 
 }
