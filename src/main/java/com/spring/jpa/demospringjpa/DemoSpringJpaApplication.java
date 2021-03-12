@@ -1,5 +1,7 @@
 package com.spring.jpa.demospringjpa;
 
+import javax.persistence.EntityManager;
+
 import com.spring.jpa.demospringjpa.entites.Course;
 import com.spring.jpa.demospringjpa.entites.Passport;
 import com.spring.jpa.demospringjpa.entites.Student;
@@ -19,6 +21,9 @@ public class DemoSpringJpaApplication implements CommandLineRunner{
 	private Logger logger=LoggerFactory.getLogger(this.getClass());
 	@Autowired
 	CourseRepository courseRepository;
+
+	@Autowired
+	EntityManager em;
 
 	@Autowired
 	StudentRepo studentRepo;
@@ -49,7 +54,11 @@ public class DemoSpringJpaApplication implements CommandLineRunner{
 		// Student student=studentRepo.findById(1L);
 		// logger.info("Student------->{}", student);
 
-		studentRepo.save();
+		// studentRepo.save();
+
+		Passport pass=em.find(Passport.class, 15L);
+		logger.info("Pass---->{}",pass);
+		logger.info("Pass-Student----{}",pass.getStudent());
 
 		
 	}

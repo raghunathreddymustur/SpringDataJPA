@@ -2,8 +2,10 @@ package com.spring.jpa.demospringjpa.entites;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class  Passport{
@@ -14,6 +16,9 @@ public class  Passport{
 
     @Column(nullable = false)
     private String course;
+
+    @OneToOne(fetch = FetchType.LAZY,mappedBy = "passportId")
+    private Student student;
 
     protected Passport()
     {
@@ -26,7 +31,7 @@ public class  Passport{
     }
     @Override
     public String toString() {
-        return "Student [course=" + course + ", id=" + id + "]";
+        return "Passport [passport=" + course + ", id=" + id + "]";
     }
 
     public String getCourse() {
@@ -39,6 +44,14 @@ public class  Passport{
 
     public Passport(String course) {
         this.course = course;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
     
 
