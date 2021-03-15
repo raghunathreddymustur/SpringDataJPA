@@ -1,8 +1,11 @@
 package com.spring.jpa.demospringjpa.repo;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import com.spring.jpa.demospringjpa.entites.Course;
+import com.spring.jpa.demospringjpa.entites.Review;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,5 +44,35 @@ public class CourseRepository {
             //logger.info("-----------------------------------------------NEW{}",course.getId());
         }
         return course;
+    }
+    public void addReviewForCourseHardcoded()
+    {
+        Course course=findById(8L);
+        logger.info("course get Review-->{}",course.getReviews());
+
+       Review r1=new Review("6","Very good");
+        Review r2=new Review("5","Not Very good");
+
+       course.addReview(r1);
+       r1.setCourse(course);
+
+        course.addReview(r2);
+        r2.setCourse(course);
+
+       em.persist(r1);
+        em.persist(r2);
+        logger.info("course get Review-->{}",course.getReviews());
+        
+    }
+
+    public void addReviewForCourseGeneric(Long cId,List<Review> reviews)
+    {
+        Course course=findById(cId);
+        for(Review r:reviews)
+        {
+            course.addReview(r);
+            r.setCourse(course);
+            em.persist(r);
+        }
     }
 }

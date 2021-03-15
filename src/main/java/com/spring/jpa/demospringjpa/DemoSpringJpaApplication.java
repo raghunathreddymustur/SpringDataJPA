@@ -1,9 +1,13 @@
 package com.spring.jpa.demospringjpa;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import com.spring.jpa.demospringjpa.entites.Course;
 import com.spring.jpa.demospringjpa.entites.Passport;
+import com.spring.jpa.demospringjpa.entites.Review;
 import com.spring.jpa.demospringjpa.entites.Student;
 import com.spring.jpa.demospringjpa.repo.CourseRepository;
 import com.spring.jpa.demospringjpa.repo.StudentRepo;
@@ -56,9 +60,19 @@ public class DemoSpringJpaApplication implements CommandLineRunner{
 
 		// studentRepo.save();
 
-		Passport pass=em.find(Passport.class, 15L);
-		logger.info("Pass---->{}",pass);
-		logger.info("Pass-Student----{}",pass.getStudent());
+		// Passport pass=em.find(Passport.class, 15L);
+		// logger.info("Pass---->{}",pass);
+		// logger.info("Pass-Student----{}",pass.getStudent());
+
+		// courseRepository.addReviewForCourseHardcoded();
+
+		List<Review> reviews=new ArrayList<>();
+		Review r1=new Review("6","Very good");
+		Review r2=new Review("5","Not Very good");
+		reviews.add(r1);
+		reviews.add(r2);
+
+		courseRepository.addReviewForCourseGeneric(7L, reviews);
 
 		
 	}
