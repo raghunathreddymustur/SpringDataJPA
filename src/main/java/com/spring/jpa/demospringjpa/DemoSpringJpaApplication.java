@@ -66,14 +66,17 @@ public class DemoSpringJpaApplication implements CommandLineRunner{
 
 		// courseRepository.addReviewForCourseHardcoded();
 
-		List<Review> reviews=new ArrayList<>();
-		Review r1=new Review("6","Very good");
-		Review r2=new Review("5","Not Very good");
-		reviews.add(r1);
-		reviews.add(r2);
+		// List<Review> reviews=new ArrayList<>();
+		// Review r1=new Review("6","Very good");
+		// Review r2=new Review("5","Not Very good");
+		// reviews.add(r1);
+		// reviews.add(r2);
 
-		courseRepository.addReviewForCourseGeneric(7L, reviews);
+		// courseRepository.addReviewForCourseGeneric(7L, reviews);
 
+		Student stu=new Student("Raghu");
+		Course cou=new Course("Spring-jpa");
+		courseRepository.insertStudentAndCourse(stu, cou);
 		
 	}
 

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import com.spring.jpa.demospringjpa.entites.Course;
 import com.spring.jpa.demospringjpa.entites.Review;
+import com.spring.jpa.demospringjpa.entites.Student;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,5 +75,13 @@ public class CourseRepository {
             r.setCourse(course);
             em.persist(r);
         }
+    }
+
+    public void insertStudentAndCourse(Student student,Course course)
+    {
+        student.addCourse(course);
+        course.addStudent(student);
+        em.persist(student);
+        em.persist(course);
     }
 }
